@@ -10,9 +10,15 @@ Route::get('/', function () {
 
 Route::get('/about', [SiswaController::class, 'about'])->name('about');
 
-Route::get('/siswa', [SiswaModelController::class, 'index'])->name('siswa.index');
+// Route::get('/siswa', [SiswaModelController::class, 'index'])->name('siswa.index');
 
-Route::get('/siswa/{id}', [SiswaModelController::class, 'show'])->name('siswa.show');
+// Route::get('/siswa/create', [SiswaModelController::class, 'create'])->name('siswa.create');
+
+// Route::get('/siswa/{id}', [SiswaModelController::class, 'show'])->name('siswa.show');
+
+
+Route::resource('siswa', SiswaModelController::class);
+
 
 Route::get('/contact', function () {
     $nama = "Abiq";

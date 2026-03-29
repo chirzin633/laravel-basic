@@ -18,7 +18,7 @@
                 <li><a class="md:p-4 py-3 px-0 block {{ request()->is('/') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="/">Home</a></li>
                 <li><a class="md:p-4 py-3 px-0 block {{request()->is('about') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="{{route('about')}}">About</a></li>
                 <li><a class="md:p-4 py-3 px-0 block {{request()->is('contact') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="/contact">Contact</a></li>
-                <li><a class="md:p-4 py-3 px-0 block md:mb-0 mb-2 {{request()->is('siswa') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="{{ route('siswa.index') }}">Daftar Siswa</a></li>
+                <li><a class="md:p-4 py-3 px-0 block md:mb-0 mb-2 {{request()->routeIs('siswa') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="{{ route('siswa.index') }}">Daftar Siswa</a></li>
             </ul>
         </nav>
     </div>

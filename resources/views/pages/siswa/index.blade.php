@@ -3,8 +3,11 @@
 @section('title', 'Daftar Siswa')
 
 @section('konten')
-<h1 class="text-xl mb-5 font-bold">List Siswa</h1>
-<div class="overflow-x-auto">
+<div class="flex justify-between">
+    <h1 class="text-xl mb-5 font-bold">List Siswa</h1>
+    <a href="{{route('siswa.create')}}" class="bg-amber-300 text-sm mb-5 px-2 py-1 rounded-lg">Create Siswa</a>
+</div>
+<div class=" overflow-x-auto">
     <table class="min-w-full divide-y-2 divide-gray-200">
         <thead class="ltr:text-left rtl:text-right">
             <tr class="*:font-medium *:text-gray-900">
