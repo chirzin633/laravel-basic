@@ -14,7 +14,7 @@ class SiswaModelController extends Controller
     public function index()
     {
         //
-        $students = SiswaModel::with('mentor')->orderBy('nilai', 'desc')->paginate(10);
+        $students = SiswaModel::with('mentor')->orderBy('created_at', 'desc')->paginate(10);
         return view('pages.siswa.index', ['data' => $students]);
     }
 
@@ -34,6 +34,24 @@ class SiswaModelController extends Controller
     public function store(Request $request)
     {
         //
+
+        $validated = $request->validate([
+            'nama' => ['required', 'string', 'min:3'],
+            'tanggal_lahir' => ['required', 'date'],
+            'jurusan' => ['required', 'string', 'min:3'],
+            'nilai' => ['required', 'numeric', 'min:0', 'max:100'],
+            'mentor_id' => ['required', 'exists:mentor_models,id'],
+        ]);
+
+        SiswaModel::create([
+            'nama' => $validated['nama'],
+            'tanggal_lahir' => $validated['tanggal_lahir'],
+            'jurusan' => $validated['jurusan'],
+            'nilai' => $validated['nilai'],
+            'mentor_id' => $validated['mentor_id']
+        ]);
+
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -65,8 +83,13 @@ class SiswaModelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(SiswaModel $siswa)
     {
         //
+        // $student = SiswaModel::findOrFail($id);
+        // $student->delete();
+        $siswa->delete();
+
+        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus!');
     }
 }

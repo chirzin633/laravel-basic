@@ -10,6 +10,14 @@
 </head>
 
 <body class="bg-gray-100">
+
+    @if (session('success'))
+    <div id="flash" class="p-4 bg-green-50 text-green-500 text-center font-bold">
+        <p>
+            {{ session('success') }}
+        </p>
+    </div>
+    @endif
     <x-navbar />
 
     <main class="w-full max-w-6xl mx-auto mt-6">
