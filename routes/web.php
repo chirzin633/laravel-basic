@@ -17,16 +17,21 @@ Route::get('/about', [SiswaController::class, 'about'])->name('about');
 
 // Route::get('/siswa/{id}', [SiswaModelController::class, 'show'])->name('siswa.show');
 
-
 Route::resource('siswa', SiswaModelController::class);
 
-Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.login');
-Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');
-Route::post('/auth/login', [AuthController::class], 'login')->name('login');
-Route::post('/auth/register', [AuthController::class], 'register')->name('register');
+Route::get('/auth/login', [AuthController::class, 'showLogin'])->name(
+    'auth.login',
+);
+Route::get('/auth/register', [AuthController::class, 'showRegister'])->name(
+    'auth.register',
+);
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/register', [AuthController::class, 'register'])->name(
+    'register',
+);
 
 Route::get('/contact', function () {
-    $nama = "Abiq";
+    $nama = 'Abiq';
     $umur = 17;
     return view('pages.contact', ['data' => $nama, 'umur' => $umur]);
 });

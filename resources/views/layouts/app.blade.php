@@ -24,7 +24,7 @@
         @yield('konten')
     </main>
 
-    @include('components.footer');
+    @include('components.footer')
 </body>
 
 </html>

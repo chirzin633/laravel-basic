@@ -3,5 +3,105 @@
 @section('title', 'Register')
 
 @section('konten')
-<h1>Ini adalah halamam register</h1>
+<div class="flex items-center justify-center min-h-screen">
+    <div class="mx-auto w-full max-w-sm rounded-lg bg-white p-6 shadow-lg">
+        <form action="{{ route('register') }}" method="POST">
+            @csrf
+            <!-- Name input -->
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">
+                    Nama
+                </label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value="{{ old('name') }}"
+                    class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('name')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
+            </div>
+
+            <!-- Email input -->
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">
+                    Email
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email"
+                    value="{{ old('email') }}"
+                    class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('email')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
+            </div>
+
+            <!-- Password input -->
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                    Password
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('password')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
+            </div>
+
+             <!-- Password confirmation input -->
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                    Password Confirmation
+                </label>
+                <input
+                    type="password"
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    placeholder="Password confirmation"
+                    class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('password_confirmation')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
+            </div>
+
+            <!-- Remember me + Have an account -->
+            <div class="mb-6 flex items-center justify-between">
+                <label class="flex items-center text-sm text-gray-600">
+                    <input type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                    <span class="ml-2">Remember me</span>
+                </label>
+                <a href="{{ route('login') }}" class="text-sm text-indigo-600 hover:text-indigo-500">
+                    Have an account?
+                </a>
+            </div>
+
+            <!-- Sign in button -->
+            <button
+                type="submit"
+                class="w-full cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white 
+             hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                Sign up
+            </button>
+
+            <!-- Register link -->
+            <p class="mt-6 text-center text-sm text-gray-600">
+                Not a member?
+                <a href="#" class="text-indigo-600 hover:text-indigo-500">Register</a>
+            </p>
+        </form>
+    </div>
+</div>
 @endsection

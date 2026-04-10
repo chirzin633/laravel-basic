@@ -5,10 +5,11 @@
 @section('konten')
 <div class="flex items-center justify-center min-h-screen">
     <div class="mx-auto w-full max-w-sm rounded-lg bg-white p-6 shadow-lg">
-        <form>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
             <!-- Email input -->
             <div class="mb-6">
-                <label for="email" class="block text-sm font-medium text-gray-700">
+                <label for="email" class="blsock text-sm font-medium text-gray-700">
                     Email
                 </label>
                 <input
@@ -54,7 +55,7 @@
             <!-- Register link -->
             <p class="mt-6 text-center text-sm text-gray-600">
                 Not a member?
-                <a href="#" class="text-indigo-600 hover:text-indigo-500">Register</a>
+                <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-500">Register</a>
             </p>
         </form>
     </div>
