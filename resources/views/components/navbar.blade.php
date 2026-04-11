@@ -13,13 +13,17 @@
     <input class="hidden" type="checkbox" id="menu-toggle" />
 
     <div class="hidden md:flex md:items-center md:w-auto w-full" id="menu">
-        <nav>
+        <nav class="flex items-center gap-18">
             <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
                 <li><a class="md:p-4 py-3 px-0 block {{ request()->is('/') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="/">Home</a></li>
                 <li><a class="md:p-4 py-3 px-0 block {{request()->is('about') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="{{route('about')}}">About</a></li>
                 <li><a class="md:p-4 py-3 px-0 block {{request()->is('contact') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="/contact">Contact</a></li>
                 <li><a class="md:p-4 py-3 px-0 block md:mb-0 mb-2 {{request()->routeIs('siswa') ? 'text-teal-700 font-bold' : 'text-gray-700' }}" href="{{ route('siswa.index') }}">Daftar Siswa</a></li>
             </ul>
+            @auth()
+                <span class="font-bold"> Hi, {{ Auth::user()->name }}</span>
+            @endauth
+            
         </nav>
     </div>
 </header>

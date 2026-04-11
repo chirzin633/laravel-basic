@@ -17,13 +17,20 @@ Route::get('/about', [SiswaController::class, 'about'])->name('about');
 
 // Route::get('/siswa/{id}', [SiswaModelController::class, 'show'])->name('siswa.show');
 
-Route::resource('siswa', SiswaModelController::class);
+Route::resource('siswa', SiswaModelController::class)->middleware('auth');
 
-Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.login');
-Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');
-Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
-Route::post('/auth/register', [AuthController::class, 'register'])->name('register');
+// Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.login');
+// Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');
+// Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
+// Route::post('/auth/register', [AuthController::class, 'register'])->name('register');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware('guest')->controller(AuthController::class)->group(function() {
+    Route::get('/auth/login', 'showLogin')->name('auth.login');
+    Route::get('/auth/register', 'showRegister')->name('auth.register');
+    Route::post('/auth/login', 'login')->name('login');
+    Route::post('/auth/register', 'register')->name('register');
+});
 
 Route::get('/contact', function () {
     $nama = 'Abiq';

@@ -95,12 +95,6 @@
              hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Sign up
             </button>
-
-            <!-- Register link -->
-            <p class="mt-6 text-center text-sm text-gray-600">
-                Not a member?
-                <a href="#" class="text-indigo-600 hover:text-indigo-500">Register</a>
-            </p>
         </form>
     </div>
 </div>
