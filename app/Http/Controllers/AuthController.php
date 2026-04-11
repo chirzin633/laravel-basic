@@ -40,8 +40,15 @@ class AuthController extends Controller
 
         Auth::login($user);
         
-        // return redirect()->route('siswa.index');
         return redirect()->route('siswa.index');
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('auth.login');
     }
 
     public function showLogin()

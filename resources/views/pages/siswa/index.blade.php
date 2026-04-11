@@ -5,7 +5,13 @@
 @section('konten')
 <div class="flex justify-between">
     <h1 class="text-xl mb-5 font-bold">List Siswa</h1>
-    <a href="{{route('siswa.create')}}" class="bg-amber-300 text-sm mb-5 px-2 py-1 rounded-lg">Create Siswa</a>
+    <div class="flex gap-2">
+        <a href="{{route('siswa.create')}}" class="bg-amber-300 text-sm mb-5 px-2 py-1 rounded-lg">Create Siswa</a>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="bg-amber-500 px-2 py-1 text-sm rounded-lg cursor-pointer">Log out</button>
+        </form>
+    </div>
 </div>
 <div class=" overflow-x-auto">
     <table class="min-w-full divide-y-2 divide-gray-200">
