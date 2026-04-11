@@ -9,15 +9,20 @@
             @csrf
             <!-- Email input -->
             <div class="mb-6">
-                <label for="email" class="blsock text-sm font-medium text-gray-700">
+                <label for="email" class="block text-sm font-medium text-gray-700">
                     Email
                 </label>
                 <input
                     type="email"
                     id="email"
                     placeholder="Enter email"
+                    name="email"
+                    value="{{ old('email') }}"
                     class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
                focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('email')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
             </div>
 
             <!-- Password input -->
@@ -28,9 +33,13 @@
                 <input
                     type="password"
                     id="password"
+                    name="password"
                     placeholder="Password"
                     class="mt-1 block w-full rounded-md border py-2 px-4 border-gray-300 shadow-sm 
                focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                @error('password')
+                    <div class="text-red-500 text-sm">{{$message}}</div>
+                @enderror
             </div>
 
             <!-- Remember me + Forgot password -->
